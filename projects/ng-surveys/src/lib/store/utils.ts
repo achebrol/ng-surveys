@@ -1,5 +1,5 @@
 import { moveItemInArray } from '@angular/cdk/drag-drop';
-import * as utils from '../store/utils';
+// import * as utils from '../store/utils';
 import {NgSurvey} from '../models/ng-survey.model';
 import {NgSurveyState} from './ng-survey.state';
 import {
@@ -49,32 +49,7 @@ export const dragItemInArray = (
 export const updateElementPositionInMap = (map) => Array.from(map).reduce(
   (acc: number, el: string | IPage | IQuestion | IOptionAnswers[] | IElements) => el[1].orderNo = acc + 1, 0);
 
-export const resetNgSurveyState = (): NgSurveyState => {
-  // Init Survey
-  const angularSurvey = new NgSurvey();
 
-  // Init Pages
-  const pageId = utils.UUID();
-  const page = new Page(pageId, angularSurvey.id);
-  const pageMap = new Map<string, IPage>().set(page.id, page);
-
-  // Init Elements
-  const element = new Elements(page.id);
-  const elementMap = new Map<string, IElements>().set(element.id, element);
-  const elementsMap = new Map<string, IElementsMap>().set(page.id, elementMap);
-
-  // Init Option Answers
-  const optionAnswerMap = new Map<string, IOptionAnswers>();
-  const optionAnswersMap = new Map<string, IOptionAnswersMap>().set(element.id, optionAnswerMap);
-
-  return {
-    survey: angularSurvey,
-    pages: pageMap,
-    elements: elementsMap,
-    optionAnswers: optionAnswersMap,
-    builderOptions: new BuilderOptionsModel(),
-  };
-};
 
 export function isEmpty(obj: any): boolean {
   for (const key in obj) {
@@ -93,32 +68,7 @@ export const getLastItemInMap = map => Array.from(map)[map.size - 1];
 export const getLastKeyInMap = map => Array.from(map)[map.size - 1][0];
 export const getElementByKeyInMap = (map, key) => map.get(key);
 
-export const UUID = (): string => {
-  if (
-    typeof (window) !== 'undefined'
-    && typeof (window.crypto) !== 'undefined'
-    && typeof (window.crypto.getRandomValues) !== 'undefined'
-  ) {
-    // If we have a cryptographically secure PRNG, use that
-    // http://stackoverflow.com/questions/6906916/collisions-when-generating-uuids-in-javascript
-    const buf: Uint16Array = new Uint16Array(8);
-    window.crypto.getRandomValues(buf);
-    return (
-      pad4(buf[0]) + pad4(buf[1])
-      + '-' + pad4(buf[2])
-      + '-' + pad4(buf[3])
-      + '-' + pad4(buf[4])
-      + '-' + pad4(buf[5])
-      + pad4(buf[6])
-      + pad4(buf[7]));
-  } else {
-    // Otherwise, just use Math.random
-    // https://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript
-    // https://stackoverflow.com/questions/11605068/why-does-jshint-argue-against-bitwise-operators-how-should-i-express-this-code
-    return random4() + random4() + '-' + random4() + '-' + random4() + '-' +
-      random4() + '-' + random4() + random4() + random4();
-  }
-};
+
 
 export const pad4 = (num: number): string => {
   let ret: string = num.toString(16);
@@ -167,3 +117,57 @@ function getTag(value) {
   }
   return toString.call(value);
 }
+
+export const UUID = (): string => {
+  if (
+    typeof (window) !== 'undefined'
+    && typeof (window.crypto) !== 'undefined'
+    && typeof (window.crypto.getRandomValues) !== 'undefined'
+  ) {
+    // If we have a cryptographically secure PRNG, use that
+    // http://stackoverflow.com/questions/6906916/collisions-when-generating-uuids-in-javascript
+    const buf: Uint16Array = new Uint16Array(8);
+    window.crypto.getRandomValues(buf);
+    return (
+      pad4(buf[0]) + pad4(buf[1])
+      + '-' + pad4(buf[2])
+      + '-' + pad4(buf[3])
+      + '-' + pad4(buf[4])
+      + '-' + pad4(buf[5])
+      + pad4(buf[6])
+      + pad4(buf[7]));
+  } else {
+    // Otherwise, just use Math.random
+    // https://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript
+    // https://stackoverflow.com/questions/11605068/why-does-jshint-argue-against-bitwise-operators-how-should-i-express-this-code
+    return random4() + random4() + '-' + random4() + '-' + random4() + '-' +
+      random4() + '-' + random4() + random4() + random4();
+  }
+};
+
+export const resetNgSurveyState = (): NgSurveyState => {
+  // Init Survey
+  const angularSurvey = new NgSurvey();
+
+  // Init Pages
+  const pageId = UUID();
+  const page = new Page(pageId, angularSurvey.id);
+  const pageMap = new Map<string, IPage>().set(page.id, page);
+
+  // Init Elements
+  const element = new Elements(page.id);
+  const elementMap = new Map<string, IElements>().set(element.id, element);
+  const elementsMap = new Map<string, IElementsMap>().set(page.id, elementMap);
+
+  // Init Option Answers
+  const optionAnswerMap = new Map<string, IOptionAnswers>();
+  const optionAnswersMap = new Map<string, IOptionAnswersMap>().set(element.id, optionAnswerMap);
+
+  return {
+    survey: angularSurvey,
+    pages: pageMap,
+    elements: elementsMap,
+    optionAnswers: optionAnswersMap,
+    builderOptions: new BuilderOptionsModel(),
+  };
+};

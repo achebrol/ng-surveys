@@ -3,6 +3,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "importHelpers": true,
+    "skipLibCheck": true,
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
@@ -20,10 +21,7 @@
     ],
     "paths": {
       "ng-surveys": [
-        "dist/ng-surveys"
-      ],
-      "ng-surveys/*": [
-        "dist/ng-surveys/*"
+        "projects/ng-surveys/src/public_api"
       ]
     }
   }

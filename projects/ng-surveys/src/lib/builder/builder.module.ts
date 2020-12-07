@@ -30,6 +30,8 @@ import { SurveyTemplateFormComponent } from './templates/survey-template-form/su
 import { SurveyParagraphViewerComponent } from './templates/survey-paragraph-viewer/survey-paragraph-viewer.component';
 import { ParagraphComponent } from './question-type/paragraph/paragraph.component';
 import { EditorComponent } from './question-type/editor/editor.component';
+import { NpsComponent } from './question-type/nps/nps.component';
+import { RatingModule } from 'ngx-bootstrap/rating';
 
 @NgModule({
   imports: [
@@ -41,6 +43,7 @@ import { EditorComponent } from './question-type/editor/editor.component';
     ReactiveFormsModule,
     CKEditorModule,
     TooltipModule.forRoot(),
+    RatingModule.forRoot(),
     BsDropdownModule.forRoot(),
   ],
   providers: [
@@ -68,6 +71,7 @@ import { EditorComponent } from './question-type/editor/editor.component';
     SurveyParagraphViewerComponent,
     ParagraphComponent,
     EditorComponent,
+    NpsComponent,
   ],
   entryComponents: [
     ShortTextComponent,
@@ -78,6 +82,7 @@ import { EditorComponent } from './question-type/editor/editor.component';
     SelectComponent,
     CheckboxComponent,
     RadioComponent,
+    NpsComponent
   ],
   exports: [
     ShortTextComponent,
@@ -101,6 +106,7 @@ import { EditorComponent } from './question-type/editor/editor.component';
     SurveyParagraphViewerComponent,
     ParagraphComponent,
     EditorComponent,
+    NpsComponent
   ]
 })
 export class BuilderModule { }

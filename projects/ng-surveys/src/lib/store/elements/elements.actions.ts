@@ -9,11 +9,16 @@ export enum ElementsActionTypes {
   QUESTION_ADD_TYPE_ACTION = '[Angular Question] Add question type',
   QUESTION_UPDATE_MIN_ACTION = '[Angular Question] Update question max value',
   QUESTION_UPDATE_MAX_ACTION = '[Angular Question] Update question min value',
+  
+  QUESTION_UPDATE_LEFT_LABEL_ACTION = '[Angular Question] Update question left value',
+  QUESTION_UPDATE_RIGHT_LABEL_ACTION = '[Angular Question] Update question right value',
+
   QUESTION_REMOVE_VALUES_ACTION = '[Angular Question] Remove question values',
   QUESTION_UPDATE_PAGE_FLOW_MODIFIER_ACTION = '[Angular Question] UPDATE question page flow modifier',
   TOGGLE_IS_ACTIVE_ELEMENT_ACTION = '[Angular Element] Toggle isActive element',
   QUESTION_UPDATE_ANSWER_ACTION = '[Angular Question] Update question answer value',
   PARAGRAPH_UPDATE_HTML_ACTION = '[Angular Paragraph] Update paragraph HTML value',
+  NPS_UPDATE_HTML_ACTION = '[Angular NPS] Update paragraph HTML value',
   RESET_ELEMENTS_STATE = '[Angular Element] Reset elements state',
   IMPORT_ELEMENTS_STATE = '[Angular Element] Import elements state',
   IMPORT_ELEMENT = '[Angular Element] Import element',

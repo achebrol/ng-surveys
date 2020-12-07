@@ -6,6 +6,7 @@ import {TooltipModule} from 'ngx-bootstrap';
 import { NgBuilderViewerComponent } from './ng-builder-viewer.component';
 import {SharedCommonModule} from '../../shared/shared-common.module';
 import {BuilderModule} from '../../builder/builder.module';
+// import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 @NgModule({
   imports: [

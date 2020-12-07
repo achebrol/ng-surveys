@@ -158,6 +158,28 @@ export class ElementsReducer {
         break;
       }
 
+      case elements.ElementsActionTypes.QUESTION_UPDATE_LEFT_LABEL_ACTION: {
+        const { pageId, elementId, leftLabel } = action.payload;
+        const prevElements: IElementsMap = state.get(pageId);
+        const newElements: IElementsMap = elementUtils.updateQuestionLeftLabel(elementId, leftLabel, prevElements);
+
+        state.set(pageId, newElements);
+
+        this._ngSurveyStore.updateElements(state);
+        break;
+      }
+
+      case elements.ElementsActionTypes.QUESTION_UPDATE_RIGHT_LABEL_ACTION: {
+        const { pageId, elementId, rightLabel } = action.payload;
+        const prevElements: IElementsMap = state.get(pageId);
+        const newElements: IElementsMap = elementUtils.updateQuestionRightLabel(elementId, rightLabel, prevElements);
+
+        state.set(pageId, newElements);
+
+        this._ngSurveyStore.updateElements(state);
+        break;
+      }
+
       case elements.ElementsActionTypes.QUESTION_REMOVE_VALUES_ACTION: {
         const { pageId, elementId } = action.payload;
         const prevElements: IElementsMap = state.get(pageId);

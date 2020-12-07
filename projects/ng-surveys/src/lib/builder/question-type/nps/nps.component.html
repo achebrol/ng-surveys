@@ -1,0 +1,54 @@
+<div *ngIf="!isView" class="row mt-5">
+  <h4>{{data.title}}</h4>
+  <div class="col-8 offset-2">
+    <form class="form-inline">
+      <div class="form-group mb-2">
+        <label class="mr-3 text-2x">Left Label </label>
+        <input type="text" name="left_label" class="form-control" [id]="'left-label-' + element.id"
+          [ngModel]="element.question.left_label" placeholder="Left Label" />
+      </div>
+      <div class="form-group mx-sm-3 mb-2">
+        <label class="mr-3 text-2x">Right Label</label>
+        <input type="text" name="right_label" class="form-control" [id]="'right-label-' + element.id"
+          [ngModel]="element.question.right_label" placeholder="Right Label" />
+      </div>
+    </form>
+
+    <!-- NPS Input 1 -->
+    <div class="form-group mt-5">
+
+      <div>{{element.question.text}}</div>
+
+      <rating [id]="'nps-input-' + element.id" [max]="10" [(ngModel)]="y" [customTemplate]="tt"></rating>
+
+
+    </div>
+  </div>
+  <!-- #/NPS Input -->
+
+</div>
+
+<!-- NPS Input 2-->
+<div class="form-group" *ngIf="isView">
+  <label [for]="'nps' + element.id">
+    <h2>{{element.question.text}}</h2>
+  </label>
+  <table>
+    <tr>
+      <td colspan="2">
+        <rating [id]="'nps-input-' + element.id" [max]="10" [(ngModel)]="data?.element.question.answer"
+          [customTemplate]="tt"></rating>
+      </td>
+    </tr>
+    <tr>
+      <td class="float-left">{{element.question.leftLabel}}</td>
+      <td class="float-right">{{element.question.rightLabel}}</td>
+    </tr>
+  </table>
+</div>
+<!-- #/NPS Input -->
+<ng-template #tt let-i="index" let-v="value">
+  <button style="margin-right:5px;" class="btn btn-{{i < v ? 'warning' : 'light'}}">
+    {{i+1}}
+  </button>
+</ng-template>

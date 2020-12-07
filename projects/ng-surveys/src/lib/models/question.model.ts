@@ -10,6 +10,8 @@ export interface IQuestion {
   elementId?: string;
   min?: number;
   max?: number;
+  leftLabel?: string;
+  rightLabel?: string;
 }
 
 export class Question implements IQuestion {
@@ -23,15 +25,19 @@ export class Question implements IQuestion {
     public elementId?: string,
     public min?: number,
     public max?: number,
+    public leftLabel?: string,
+    public rightLabel?: string
   ) {
     this.id = id ? id : utils.UUID();
-    this.text = text ? text : '';
-    this.answer = answer ? answer : '';
-    this.type = type ? type : '';
-    this.required = required ? required : false;
-    this.pageFlowModifier = pageFlowModifier ? pageFlowModifier : false;
-    this.elementId = elementId ? elementId : '';
-    this.min = min ? min : null;
-    this.max = max ? max : null;
+    this.text = text || '';
+    this.answer = answer || '';
+    this.type = type || '';
+    this.required = required || false;
+    this.pageFlowModifier = pageFlowModifier || false;
+    this.elementId = elementId || '';
+    this.min = min || null;
+    this.max = max || null;
+    this.leftLabel = leftLabel || null;
+    this.rightLabel = rightLabel || null;
   }
 }

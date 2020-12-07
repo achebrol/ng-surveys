@@ -107,6 +107,22 @@ export function updateQuestionMax(elementId: string, max: number, elements: IEle
   return new Map<string, IElements>(elements);
 }
 
+export function updateQuestionLeftLabel(elementId: string, leftLabel: string, elements: IElementsMap): IElementsMap {
+  const currentQuestion: IQuestion = elements.get(elementId).question;
+
+  currentQuestion.leftLabel = leftLabel;
+
+  return new Map<string, IElements>(elements);
+}
+
+export function updateQuestionRightLabel(elementId: string, rightLabel: string, elements: IElementsMap): IElementsMap {
+  const currentQuestion: IQuestion = elements.get(elementId).question;
+
+  currentQuestion.rightLabel = rightLabel;
+
+  return new Map<string, IElements>(elements);
+}
+
 export function removeQuestionValues(elementId: string, elements: IElementsMap): IElementsMap {
   const currentElement: IElements = elements.get(elementId);
 

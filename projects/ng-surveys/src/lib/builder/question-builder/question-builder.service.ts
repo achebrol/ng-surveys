@@ -9,6 +9,7 @@ import {RadioCheckboxSelectComponent} from '../question-type/radio-checkbox-sele
 import {SelectComponent} from '../question-type/select/select.component';
 import {CheckboxComponent} from '../question-type/checkbox/checkbox.component';
 import {RadioComponent} from '../question-type/radio/radio.component';
+import { NpsComponent } from '../question-type/nps/nps.component';
 
 @Injectable()
 export class QuestionBuilderService {
@@ -38,6 +39,9 @@ export class QuestionBuilderService {
     } else if (type === 'range') {
       component = RangeComponent;
       title = isView ? element.question.text : 'Range Question Template';
+    } else if (type === 'nps') {
+      component = NpsComponent;
+      title = isView ? element.question.text : 'NPS Question Template';
     }
 
     return new QuestionItemComponent(component, {
